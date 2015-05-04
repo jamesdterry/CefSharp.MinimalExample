@@ -14,8 +14,8 @@ namespace CefSharp.MinimalExample.WinForms
         {
             Cef.Initialize(new CefSettings());
 
-            var browser = new BrowserForm();
-            Application.Run(browser);
+            var config = new ConfigForm();
+            Application.Run(config);
         }
     }
 }

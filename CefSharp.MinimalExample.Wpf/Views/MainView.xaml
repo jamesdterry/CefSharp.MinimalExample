@@ -13,18 +13,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <cefSharp:ChromiumWebBrowser Grid.Row="0"
-                          Address="http://www.google.com"
+                          Address="http://www.cnn.com"
                           WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}"
                           Title="{Binding Title, Mode=TwoWay}" />
-        <StatusBar Grid.Row="1">
-            <ProgressBar HorizontalAlignment="Right"
-                         IsIndeterminate="{Binding WebBrowser.IsLoading}"
-                         Width="100"
-                         Height="16"
-                         Margin="3" />
-            <Separator />
-            <!-- TODO: Could show hover link URL here -->
-            <TextBlock />
-        </StatusBar>
     </Grid>
 </UserControl>

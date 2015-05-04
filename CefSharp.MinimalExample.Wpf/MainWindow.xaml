@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:main="clr-namespace:CefSharp.MinimalExample.Wpf.Views"
         Title="{Binding WebBrowser.Title}"
+        WindowStyle="None" 
+        ResizeMode="NoResize"  
+        WindowStartupLocation="CenterScreen" 
         WindowState="Maximized">
     <main:MainView/>
 </Window>

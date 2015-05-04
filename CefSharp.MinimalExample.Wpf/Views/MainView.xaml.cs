@@ -9,6 +9,8 @@ namespace CefSharp.MinimalExample.Wpf.Views
         {
             InitializeComponent();
             DataContext = new MainViewModel();
+
+            //Console.WriteLine("{0}", DataContext.WebBrowser);
         }
     }
 }
