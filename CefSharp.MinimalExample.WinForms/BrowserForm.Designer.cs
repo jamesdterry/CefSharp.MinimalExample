@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrowserForm));
+            this.timerTimeou = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // timerTimeou
+            // 
+            this.timerTimeou.Enabled = true;
+            this.timerTimeou.Interval = 1000;
+            this.timerTimeou.Tick += new System.EventHandler(this.timerTimeou_Tick);
             // 
             // BrowserForm
             // 
@@ -50,6 +58,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerTimeou;
 
 
 

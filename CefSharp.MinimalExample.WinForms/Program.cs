@@ -9,13 +9,16 @@ namespace CefSharp.MinimalExample.WinForms
 {
     public class Program
     {
+        public static ConfigForm config;
+
         [STAThread]
         public static void Main()
         {
             Cef.Initialize(new CefSettings());
 
-            var config = new ConfigForm();
+            config = new ConfigForm();
             Application.Run(config);
         }
+
     }
 }

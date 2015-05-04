@@ -24,9 +24,9 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Save();
             BrowserForm b = new BrowserForm();
             b.Show();
-            //this.Close();
         }
     }
 }

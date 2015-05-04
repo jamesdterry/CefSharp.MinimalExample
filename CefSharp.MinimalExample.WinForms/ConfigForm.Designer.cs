@@ -31,11 +31,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxAppUrl = new System.Windows.Forms.TextBox();
-            this.textBoxTimeouUrl = new System.Windows.Forms.TextBox();
-            this.textBoxTimeoutSecs = new System.Windows.Forms.TextBox();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonQuit = new System.Windows.Forms.Button();
+            this.textBoxTimeoutSecs = new System.Windows.Forms.TextBox();
+            this.textBoxTimeouUrl = new System.Windows.Forms.TextBox();
+            this.textBoxAppUrl = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label2
@@ -65,27 +65,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Timeout Secs";
             // 
-            // textBoxAppUrl
-            // 
-            this.textBoxAppUrl.Location = new System.Drawing.Point(97, 23);
-            this.textBoxAppUrl.Name = "textBoxAppUrl";
-            this.textBoxAppUrl.Size = new System.Drawing.Size(515, 20);
-            this.textBoxAppUrl.TabIndex = 4;
-            // 
-            // textBoxTimeouUrl
-            // 
-            this.textBoxTimeouUrl.Location = new System.Drawing.Point(97, 58);
-            this.textBoxTimeouUrl.Name = "textBoxTimeouUrl";
-            this.textBoxTimeouUrl.Size = new System.Drawing.Size(515, 20);
-            this.textBoxTimeouUrl.TabIndex = 5;
-            // 
-            // textBoxTimeoutSecs
-            // 
-            this.textBoxTimeoutSecs.Location = new System.Drawing.Point(97, 98);
-            this.textBoxTimeoutSecs.Name = "textBoxTimeoutSecs";
-            this.textBoxTimeoutSecs.Size = new System.Drawing.Size(515, 20);
-            this.textBoxTimeoutSecs.TabIndex = 6;
-            // 
             // buttonStart
             // 
             this.buttonStart.Location = new System.Drawing.Point(13, 149);
@@ -105,6 +84,33 @@
             this.buttonQuit.Text = "Quit";
             this.buttonQuit.UseVisualStyleBackColor = true;
             this.buttonQuit.Click += new System.EventHandler(this.buttonQuit_Click);
+            // 
+            // textBoxTimeoutSecs
+            // 
+            this.textBoxTimeoutSecs.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::CefSharp.MinimalExample.WinForms.Properties.Settings.Default, "TimeoutSecs", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxTimeoutSecs.Location = new System.Drawing.Point(97, 98);
+            this.textBoxTimeoutSecs.Name = "textBoxTimeoutSecs";
+            this.textBoxTimeoutSecs.Size = new System.Drawing.Size(515, 20);
+            this.textBoxTimeoutSecs.TabIndex = 6;
+            this.textBoxTimeoutSecs.Text = global::CefSharp.MinimalExample.WinForms.Properties.Settings.Default.TimeoutSecs;
+            // 
+            // textBoxTimeouUrl
+            // 
+            this.textBoxTimeouUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::CefSharp.MinimalExample.WinForms.Properties.Settings.Default, "TimeoutURL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxTimeouUrl.Location = new System.Drawing.Point(97, 58);
+            this.textBoxTimeouUrl.Name = "textBoxTimeouUrl";
+            this.textBoxTimeouUrl.Size = new System.Drawing.Size(515, 20);
+            this.textBoxTimeouUrl.TabIndex = 5;
+            this.textBoxTimeouUrl.Text = global::CefSharp.MinimalExample.WinForms.Properties.Settings.Default.TimeoutURL;
+            // 
+            // textBoxAppUrl
+            // 
+            this.textBoxAppUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::CefSharp.MinimalExample.WinForms.Properties.Settings.Default, "AppUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxAppUrl.Location = new System.Drawing.Point(97, 23);
+            this.textBoxAppUrl.Name = "textBoxAppUrl";
+            this.textBoxAppUrl.Size = new System.Drawing.Size(515, 20);
+            this.textBoxAppUrl.TabIndex = 4;
+            this.textBoxAppUrl.Text = global::CefSharp.MinimalExample.WinForms.Properties.Settings.Default.AppUrl;
             // 
             // ConfigForm
             // 
@@ -131,9 +137,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxAppUrl;
-        private System.Windows.Forms.TextBox textBoxTimeouUrl;
-        private System.Windows.Forms.TextBox textBoxTimeoutSecs;
+        public System.Windows.Forms.TextBox textBoxAppUrl;
+        public System.Windows.Forms.TextBox textBoxTimeouUrl;
+        public System.Windows.Forms.TextBox textBoxTimeoutSecs;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonQuit;
     }

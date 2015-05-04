@@ -13,14 +13,19 @@ namespace CefSharp.MinimalExample.WinForms
     {
         private readonly ChromiumWebBrowser browser;
 
+        private bool timeoutInProgress;
+        private DateTime timeoutStart;
+
         public BrowserForm()
         {
             InitializeComponent();
 
+            timeoutInProgress = false;
+
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser("file:///C:/Users/James/edge15/IBM_EDGEv56.html")
+            browser = new ChromiumWebBrowser(Program.config.textBoxAppUrl.Text)
             {
                 Dock = DockStyle.Fill,
             };
@@ -64,6 +69,17 @@ namespace CefSharp.MinimalExample.WinForms
         private void OnBrowserAddressChanged(object sender, AddressChangedEventArgs args)
         {
             Console.WriteLine(args.Address);
+
+            if (args.Address == Program.config.textBoxTimeouUrl.Text)
+            {
+                timeoutInProgress = true;
+                timeoutStart = DateTime.Now;
+            }
+            else if (args.Address == Program.config.textBoxAppUrl.Text)
+            {
+                timeoutInProgress = false;
+            }
+
             //this.InvokeOnUiThreadIfRequired(() => urlTextBox.Text = args.Address);
         }
 
@@ -134,6 +150,21 @@ namespace CefSharp.MinimalExample.WinForms
             if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
                 browser.Load(url);
+            }
+        }
+
+        private void timerTimeou_Tick(object sender, EventArgs e)
+        {
+            if (!timeoutInProgress) return;
+
+            if (Program.config.textBoxTimeoutSecs.Text.Length == 0) return;
+
+            TimeSpan t = DateTime.Now - timeoutStart;
+
+            if (t.TotalSeconds > Convert.ToInt32(Program.config.textBoxTimeoutSecs.Text)) {
+                // Timeout
+                timeoutInProgress = false;
+                browser.Load(Program.config.textBoxAppUrl.Text);
             }
         }
     }
