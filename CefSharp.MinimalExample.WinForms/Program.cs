@@ -16,8 +16,12 @@ namespace CefSharp.MinimalExample.WinForms
         {
             Cef.Initialize(new CefSettings());
 
+            InterceptMouse.InstallHook();
+
             config = new ConfigForm();
             Application.Run(config);
+
+            InterceptMouse.RemoveHook();
         }
 
     }

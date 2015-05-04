@@ -11,6 +11,8 @@ namespace CefSharp.MinimalExample.WinForms
 {
     public partial class ConfigForm : Form
     {
+        public BrowserForm browserForm;
+
         public ConfigForm()
         {
             InitializeComponent();
@@ -25,8 +27,8 @@ namespace CefSharp.MinimalExample.WinForms
         private void buttonStart_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
-            BrowserForm b = new BrowserForm();
-            b.Show();
+            browserForm = new BrowserForm();
+            browserForm.Show();
         }
     }
 }

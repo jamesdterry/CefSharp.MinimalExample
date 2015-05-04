@@ -15,12 +15,14 @@ namespace CefSharp.MinimalExample.WinForms
 
         private bool timeoutInProgress;
         private DateTime timeoutStart;
+        private int configTouchStep;
 
         public BrowserForm()
         {
             InitializeComponent();
 
             timeoutInProgress = false;
+            configTouchStep = 0;
 
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
@@ -153,6 +155,37 @@ namespace CefSharp.MinimalExample.WinForms
             }
         }
 
+        public void mouseHook(int x, int y)
+        {
+            if ((x < 60) && (y < 60))
+            {
+                if (configTouchStep != 3)
+                {
+                    configTouchStep++;
+                }
+                else
+                {
+                    configTouchStep = 0;
+                }
+            }
+            else
+            {
+                if (configTouchStep == 3)
+                {
+                    configTouchStep++;
+                }
+                else
+                {
+                    configTouchStep = 0;
+                }
+            }
+
+            if (configTouchStep == 5) {
+                // Goto Config
+                this.Close();
+            }
+        }
+
         private void timerTimeou_Tick(object sender, EventArgs e)
         {
             if (!timeoutInProgress) return;
@@ -167,5 +200,6 @@ namespace CefSharp.MinimalExample.WinForms
                 browser.Load(Program.config.textBoxAppUrl.Text);
             }
         }
+
     }
 }
