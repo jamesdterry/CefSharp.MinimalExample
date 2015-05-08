@@ -21,11 +21,19 @@ namespace CefSharp.MinimalExample.WinForms
         {
             InitializeComponent();
 
+            int screenLeft = SystemInformation.VirtualScreen.Left;
+            int screenTop = SystemInformation.VirtualScreen.Top;
+            int screenWidth = SystemInformation.VirtualScreen.Width;
+            int screenHeight = SystemInformation.VirtualScreen.Height;
+
+            this.Size = new System.Drawing.Size(screenWidth, screenHeight);
+            this.Location = new System.Drawing.Point(screenLeft, screenTop); 
+            
             timeoutInProgress = false;
             configTouchStep = 0;
 
             Text = "CefSharp";
-            WindowState = FormWindowState.Maximized;
+            //WindowState = FormWindowState.Maximized;
 
             browser = new ChromiumWebBrowser(Program.config.textBoxAppUrl.Text)
             {
